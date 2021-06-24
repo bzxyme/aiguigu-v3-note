@@ -5,7 +5,13 @@
  -->
 <template>
   <ul class="todo-main">
-    <item v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <item
+      v-for="(todo, index) in todos"
+      :key="todo.id"
+      :todo="todo"
+      :deleteTodo="deleteTodo"
+      :index="index"
+    />
   </ul>
 </template>
 
@@ -16,7 +22,7 @@ import Item from "./Item.vue";
 export default defineComponent({
   components: { Item },
   name: "List",
-  props: ["todos"],
+  props: ["todos", "deleteTodo"],
 });
 </script>
 

@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo" />
-      <list :todos="todos" />
+      <list :todos="todos" :deleteTodo='deleteTodo' />
       <Footer />
     </div>
   </div>
@@ -37,9 +37,14 @@ export default defineComponent({
       state.todos.unshift(todo);
     };
 
+    const deleteTodo = (index: number) => {
+      state.todos.splice(index, 1);
+    };
+
     return {
       ...toRefs(state),
       addTodo,
+      deleteTodo,
     };
   },
 });
