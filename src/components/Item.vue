@@ -46,26 +46,40 @@ export default defineComponent({
   },
 
   setup(props) {
+    // 背景色
+
     const bgColor = ref("white");
+    // 前景色
+
     const myColor = ref("black");
+    // 设置按钮默认不显示
+
     const isShow = ref(false);
+    // 鼠标进入和离开事件的回调函数
+
     const mouseHandler = (flag: boolean) => {
       if (flag) {
+        // 鼠标进入
+
         bgColor.value = "pink";
         myColor.value = "green";
         isShow.value = true;
       } else {
+        // 鼠标离开
+
         bgColor.value = "white";
         myColor.value = "black";
         isShow.value = false;
       }
     };
+    // 删除数据的方法
 
     const delTodo = () => {
       if (window.confirm("确定要删除吗?")) {
         props.deleteTodo(props.index);
       }
     };
+    // 计算属性的方式---来让当前的复选框选中/不选中
 
     const isCompleted = computed({
       get() {

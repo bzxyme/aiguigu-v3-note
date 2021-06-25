@@ -39,12 +39,16 @@ export default defineComponent({
     },
   },
   setup(props) {
+    // 已完成的计算属性操作
+
     const count = computed(() => {
       return props.todos.reduce(
         (pre, todo, index) => pre + (todo.isCompleted ? 1 : 0),
         0
       );
     });
+    // 全选/全不选的计算属性操作
+
     const isCheckAll = computed({
       get() {
         return count.value > 0 && count.value === props.todos.length;

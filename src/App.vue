@@ -29,6 +29,8 @@ export default defineComponent({
     List,
     Footer,
   },
+    // 界面加载完毕后过了一会再读取数据
+
   setup() {
     onMounted(() => {
       setTimeout(() => {
@@ -39,18 +41,22 @@ export default defineComponent({
     const state = reactive<{ todos: Todo[] }>({
       todos: [],
     });
+    // 添加数据的方法
 
     const addTodo = (todo: Todo) => {
       state.todos.unshift(todo);
     };
+    // 删除数据的方法
 
     const deleteTodo = (index: number) => {
       state.todos.splice(index, 1);
     };
+    // 修改todo的isCompleted属性的状态
 
     const updateTodo = (todo: Todo, isCompleted: boolean) => {
       todo.isCompleted = isCompleted;
     };
+    // 全选或者是全不选的方法
 
     const checkAll = (isCompleted: boolean) => {
       state.todos.forEach((element) => {
@@ -59,6 +65,7 @@ export default defineComponent({
     };
 
     watch(() => state.todos, saveTodos, { deep: true });
+    // 清理所有选中的数据
 
     const clearAllCompletedTodo = () => {
       state.todos = state.todos.filter((todo) => !todo.isCompleted);
