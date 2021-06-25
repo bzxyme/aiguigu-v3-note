@@ -11,6 +11,7 @@
       :todo="todo"
       :deleteTodo="deleteTodo"
       :index="index"
+      :updateTodo="updateTodo"
     />
   </ul>
 </template>
@@ -22,7 +23,7 @@ import Item from "./Item.vue";
 export default defineComponent({
   components: { Item },
   name: "List",
-  props: ["todos", "deleteTodo"],
+  props: ["todos", "deleteTodo", "updateTodo"],
 });
 </script>
 
